@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>BLOG</title>
+		<title class="blog">BLOG</title>
+		<link rel=Stylesheet type="text/css" href=style.css>
 	</head>
 
 	<body>
@@ -25,7 +26,7 @@
 			}
 
 
-$req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date, \'%d/%m/%Y à %Hh%imin%ss\') AS date FROM articles ORDER BY date DESC LIMIT 0, 4');
+$req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date, \'%d/%m/%Y \') AS date FROM articles ORDER BY date DESC LIMIT 0, 4');
 
 
 while ($donnees = $req->fetch())
@@ -38,7 +39,7 @@ while ($donnees = $req->fetch())
 
     <h2>
 
-        <?phpecho htmlspecialchars($donnees['titre']); ?>
+        <?php echo htmlspecialchars($donnees['titre']); ?>
 
         <em>le <?php echo $donnees['date']; ?></em>
 
@@ -47,11 +48,14 @@ while ($donnees = $req->fetch())
     <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Modifier</a></em>
     <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Supprimer</a></em>
     <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Ajouter</a></em>
+    
+    
     <p>
+
 
     <?php
 
-    // On affiche le contenu du billet
+    // On affiche le contenu de l'article.
 
     echo nl2br(htmlspecialchars($donnees['contenu']));
 
@@ -66,7 +70,7 @@ while ($donnees = $req->fetch())
 
 <?php
 
-} // Fin de la boucle des billets
+} // Fin de la boucle des articles.
 
 $req->closeCursor();
 
