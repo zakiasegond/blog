@@ -6,6 +6,7 @@
 
 	<body>
 		<h1>BLOG</h1>
+
 		<?php
 			$pdo = new PDO('mysql:host=localhost;dbname=blog', 'segond', 'loudmila32');
 		?>
@@ -37,14 +38,15 @@ while ($donnees = $req->fetch())
 
     <h2>
 
-        <?php echo htmlspecialchars($donnees['titre']); ?>
+        <?phpecho htmlspecialchars($donnees['titre']); ?>
 
         <em>le <?php echo $donnees['date']; ?></em>
 
     </h2>
 
-    
-
+    <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Modifier</a></em>
+    <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Supprimer</a></em>
+    <em><a href="blog.php?articles=<?php echo $donnees['id']; ?>">Ajouter</a></em>
     <p>
 
     <?php
